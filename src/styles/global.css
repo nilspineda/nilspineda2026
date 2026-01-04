@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+
+@theme {
+    
+  --color-primary-50: oklch(0.958 0.055 173.57);
+  --color-primary-100: oklch(0.904 0.137 173.72);
+  --color-primary-200: oklch(0.825 0.145 173.64);
+  --color-primary-300: oklch(0.751 0.133 173.51);
+  --color-primary-400: oklch(0.68 0.12 173.52);  /* Color Base */
+  --color-primary-500: oklch(0.59 0.104 173.59);
+  --color-primary-600: oklch(0.499 0.088 172.95);
+  --color-primary-700: oklch(0.404 0.071 174.3);
+  --color-primary-800: oklch(0.32 0.057 173.02);
+  --color-primary-900: oklch(0.227 0.039 174.89);
+  --color-primary-950: oklch(0.172 0.03 175.03);
+  --color-secondary-50: oklch(0.966 0.008 253.85);
+  --color-secondary-100: oklch(0.931 0.017 256.29);
+  --color-secondary-200: oklch(0.854 0.038 253.24);
+  --color-secondary-300: oklch(0.784 0.057 251);
+  --color-secondary-400: oklch(0.713 0.078 248.97);
+  --color-secondary-500: oklch(0.646 0.07 248.28);
+  --color-secondary-600: oklch(0.568 0.062 248.96);
+  --color-secondary-700: oklch(0.499 0.055 248.05);
+  --color-secondary-800: oklch(0.43 0.048 248.98);
+  --color-secondary-900: oklch(0.356 0.039 248.97); /* Color Base */
+  --color-secondary-950: oklch(0.25 0.027 246.75);
+  --color-accent: #131a22;
+}
+
+
+body {
+  font-family: 'DM Sans Variable', sans-serif;
+    background-color: var(--color-accent);
+  
+}

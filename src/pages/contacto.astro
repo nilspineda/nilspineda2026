@@ -1,0 +1,125 @@
+---
+import LayoutNav from "../layouts/Layout-nav.astro";
+---
+
+<LayoutNav title="Contacto | Nils Pineda">
+  <main class="relative min-h-dvh flex flex-col items-center justify-center px-6 py-24 overflow-hidden">
+    
+    <div class="fixed inset-0 -z-10 bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)]"></div>
+
+    <div class="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <div class="text-center lg:text-left">
+        <h1 class="text-white text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          ¿Hacemos algo <span class="text-primary-400">increíble?</span>
+        </h1>
+        <p class="text-gray-400 text-lg mb-8 max-w-md mx-auto lg:mx-0">
+          Estoy listo para escuchar tu idea. Escríbeme y diseñemos una experiencia digital que destaque.
+        </p>
+        
+        <div class="flex flex-col gap-4 items-center lg:items-start">
+            <div class="flex items-center gap-3 text-white/80">
+                <span class="flex h-3 w-3 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-primary-500"></span>
+                </span>
+                Respuesta en menos de 24h
+            </div>
+            <a href="mailto:info@nilspineda.com" class="text-primary-400 hover:underline font-medium">info@nilspineda.com</a>
+        </div>
+      </div>
+
+      <div class="bg-white/0.03 backdrop-blur-xl border border-white/10 p-8 rounded-[2.5rem] shadow-2xl">
+        <form id="contact-form" class="flex flex-col gap-5">
+          <div class="flex flex-col gap-2">
+            <label class="text-white/60 text-sm ml-2">Nombre</label>
+            <input 
+              type="text" 
+              name="name" 
+              required 
+              placeholder="Tu nombre"
+              class="bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-primary-400 transition-all placeholder:text-white/20"
+            />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label class="text-white/60 text-sm ml-2">Email</label>
+            <input 
+              type="email" 
+              name="email" 
+              required 
+              placeholder="tu@email.com"
+              class="bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-primary-400 transition-all placeholder:text-white/20"
+            />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label class="text-white/60 text-sm ml-2">Mensaje</label>
+            <textarea 
+              name="message" 
+              required 
+              rows="4" 
+              placeholder="¿En qué puedo ayudarte?"
+              class="bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-primary-400 transition-all resize-none placeholder:text-white/20"
+            ></textarea>
+          </div>
+
+          <button 
+            type="submit" 
+            id="submit-btn"
+            class="mt-4 bg-primary-400 text-accent font-bold py-4 rounded-2xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary-400/20"
+          >
+            <span id="btn-text">Enviar mensaje</span>
+            <svg id="btn-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+          
+          <p id="response-status" class="text-center text-sm font-medium mt-2 hidden"></p>
+        </form>
+      </div>
+    </div>
+  </main>
+</LayoutNav>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text');
+  const status = document.getElementById('response-status');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Estado de carga
+    btn.disabled = true;
+    btnText!.innerText = "Enviando...";
+    status!.classList.add('hidden');
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        status!.innerText = "¡Mensaje enviado! Te escribiré pronto.";
+        status!.className = "text-primary-400 text-center text-sm font-medium mt-2 block animate-bounce";
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      status!.innerText = "Error al enviar. Intenta por WhatsApp.";
+      status!.className = "text-red-400 text-center text-sm font-medium mt-2 block";
+    } finally {
+      btn.disabled = false;
+      btnText!.innerText = "Enviar mensaje";
+    }
+  });
+</script>

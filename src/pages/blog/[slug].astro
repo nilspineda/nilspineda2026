@@ -1,0 +1,50 @@
+---
+import LayoutNav from '../../layouts/Layout-nav.astro';
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob('../../content/blog/*.md');
+
+  return posts.map(post => ({
+    params: { slug: post.frontmatter.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+// Formato fecha
+const formatDate = (date) =>
+  new Intl.DateTimeFormat('es-ES', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  }).format(new Date(date));
+---
+<LayoutNav
+  title={post.frontmatter.title}
+  class="bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)] min-h-screen"
+>
+  <article class="px-6 lg:px-40 py-20 max-w-4xl mx-auto">
+    {/* Imagen destacada */}
+    {post.frontmatter.image && (
+      <img
+        src={post.frontmatter.image}
+        alt={post.frontmatter.title}
+        class="w-full rounded-2xl mb-10 object-cover"
+      />
+    )}
+
+    <h1 class="text-white text-4xl font-bold mb-3">
+      {post.frontmatter.title}
+    </h1>
+
+    <p class="text-gray-400 text-sm mb-10">
+      {formatDate(post.frontmatter.date)}
+    </p>
+
+    {/* Contenido del markdown */}
+    <div class="prose prose-invert max-w-none">
+      <post.Content />
+    </div>
+  </article>
+</LayoutNav>
