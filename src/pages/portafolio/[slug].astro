@@ -1,0 +1,61 @@
+---
+import LayoutNav from "../../layouts/Layout-nav.astro";
+import { getCollection, getEntryBySlug } from "astro:content";
+
+/* 1️⃣ Rutas estáticas */
+export async function getStaticPaths() {
+  const portafolios = await getCollection("portafolio");
+
+  return portafolios.map((portafolio) => ({
+    params: { slug: portafolio.slug },
+  }));
+}
+
+/* 2️⃣ Slug */
+const slug = Astro.params.slug;
+if (!slug) throw new Error("Slug no definido");
+
+/* 3️⃣ Entrada */
+const portafolio = await getEntryBySlug("portafolio", slug);
+if (!portafolio) {
+  throw new Error(`Portafolio no encontrado: ${slug}`);
+}
+
+/* 4️⃣ ⚠️ RENDER CORRECTO DEL MARKDOWN */
+const { Content } = await portafolio.render();
+
+/* 5️⃣ Formato fecha */
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("es-ES", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(date));
+---
+<LayoutNav
+  title={portafolio.data.title}
+  class="bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)] min-h-screen"
+>
+  <article class="px-6 lg:px-40 py-20 max-w-4xl mx-auto">
+    {portafolio.data.image && (
+      <img
+        src={portafolio.data.image}
+        alt={portafolio.data.title}
+        class="w-full rounded-2xl mb-10 object-cover"
+      />
+    )}
+
+    <h1 class="text-white text-4xl font-bold mb-3">
+      {portafolio.data.title}
+    </h1>
+
+    <p class="text-gray-400 text-sm mb-10">
+      {formatDate(portafolio.data.date)}
+    </p>
+
+    {/* ✅ CONTENIDO MARKDOWN */}
+    <div class="prose prose-invert max-w-none">
+      <Content />
+    </div>
+  </article>
+</LayoutNav>
