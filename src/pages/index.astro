@@ -3,57 +3,61 @@ import { set } from "astro:schema";
 import Layout from "../layouts/Layout.astro";
 import Radio from "../components/Radio.astro";
 
-
 const cardsHome = [
-	 {
-	title: "Sobre Mi",
-	
-	icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>',
-	link: "/sobremi",
-  },
   {
-	title: "Portafolio",
-	
-	icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-briefcase"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" /><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" /><path d="M12 12l0 .01" /><path d="M3 13a20 20 0 0 0 18 0" /></svg>',
-	link: "/portafolio",
-  },
-  {
-	title: "Servicios",
-	
-	icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" /><path d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" /><path d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" /><path d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" /></svg>',
-	link: "/servicios/",
-  },
-   
-  {
-	title: "Blog",
-	
-	icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-news"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" /><path d="M8 8l4 0" /><path d="M8 12l4 0" /><path d="M8 16l4 0" /></svg>',
-	link: "/blog",
-  },
-  {
-	title: "Contacto",
-	
-	icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-phone"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>',
-	link: "/contacto",
-  },
-  
-]
+    title: "Sobre Mi",
 
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>',
+    link: "/sobremi",
+  },
+  {
+    title: "Portafolio",
+
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-briefcase"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" /><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" /><path d="M12 12l0 .01" /><path d="M3 13a20 20 0 0 0 18 0" /></svg>',
+    link: "/portafolio",
+  },
+  {
+    title: "Servicios",
+
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" /><path d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" /><path d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" /><path d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" /></svg>',
+    link: "/servicios/",
+  },
+
+  {
+    title: "Blog",
+
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-news"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" /><path d="M8 8l4 0" /><path d="M8 12l4 0" /><path d="M8 16l4 0" /></svg>',
+    link: "/blog",
+  },
+  {
+    title: "Contacto",
+
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-phone"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>',
+    link: "/contacto",
+  },
+];
 ---
 
-<Layout class="bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)] h-min-screen" >
-	
-
-	<section 
-    class="w-full flex flex-col lg:flex-row justify-center items-center px-8 lg:px-0 lg:py-0">
+<Layout
+  class="bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)] h-min-screen pt-"
+>
+  <section
+    class="w-full flex flex-col lg:flex-row justify-center items-center px-8 lg:px-0 lg:py-16"
+  >
     <div
-	class="w-full lg:w-1/2 flex flex-col items-center lg:items-center gap-6 text-center lg:text-center"
+      class="w-full lg:w-1/2 flex flex-col items-center lg:items-center gap-6 text-center lg:text-center"
     >
-	<a href="./" rel="noopener noreferrer"><img src="../logo.svg" alt="logo Nils Pineda" class="w-48 lg:w-92"/></a>
+      <a href="./" rel="noopener noreferrer"
+        ><img
+          src="../logo.svg"
+          alt="logo Nils Pineda"
+          class="w-48 lg:w-92"
+        /></a
+      >
       <span
         class="bg-primary-400/20 px-4 py-2 rounded-2xl text-primary-400 border border-primary-400/50 text-sm md:text-base animacion-botones"
       >
-        <a  rel="noopener noreferrer"
+        <a rel="noopener noreferrer"
           ><div class="flex items-center gap-2">
             <span class="relative flex h-3 w-3">
               <span
@@ -72,34 +76,46 @@ const cardsHome = [
         >
       </span>
 
-      <h1
-        class="text-white text-4xl md:text-6xl lg:text-7xl mt-4 font-medium "
-      >
+      <h1 class="text-white text-4xl md:text-6xl lg:text-7xl mt-4 font-medium">
         Diseño y desarrollo que acercan
         <span class="text-primary-400 font-bold block lg:inline"
           >tu marca a las personas</span
         >
       </h1>
 
-      <p class="text-gray-400 text-base md:text-lg ">
+      <p class="text-gray-400 text-base md:text-lg">
         Transformamos ideas en experiencias digitales que conectan con tu
         audiencia. Con diseño y desarrollo a tu medida, damos vida a tu marca.
       </p>
 
       <div
-        class="flex flex-col sm:flex-row gap-4 w-full justify-center lg:justify-center mt-4 "
+        class="flex flex-col sm:flex-row gap-4 w-full justify-center lg:justify-center mt-4"
       >
-       <a
-  href="https://wa.me/573167195500?text=Hola,%20vengo%20desde%20el%20sitio%20web%20y%20quiero%20cotizar%20uno%20de%20tus%20servicios"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="bg-primary-400 text-white px-8 py-3 rounded-xl font-bold hover:bg-primary-500 transition-all text-center animacion-botones flex items-center justify-center gap-2"
->
-  Hablemos 
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler-brand-whatsapp">
-    <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
-  </svg>
-</a>
+        <a
+          href="https://wa.me/573167195500?text=Hola,%20vengo%20desde%20el%20sitio%20web%20y%20quiero%20cotizar%20uno%20de%20tus%20servicios"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-primary-400 text-white px-8 py-3 rounded-xl font-bold hover:bg-primary-500 transition-all text-center animacion-botones flex items-center justify-center gap-2"
+        >
+          Hablemos
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler-brand-whatsapp"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+              d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path><path
+              d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"
+            ></path>
+          </svg>
+        </a>
         <a
           href="/portafolio"
           class="border border-white/20 text-white px-8 py-3 rounded-xl hover:bg-white/10 transition-all text-center animacion-botones"
@@ -110,43 +126,42 @@ const cardsHome = [
     </div>
   </section>
 
- <section class="flex justify-center items-center px-6 py-12 lg:px-40 lg:py-24">
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full max-w-7xl">
-    {cardsHome.map((card) => (
-      <a href={card.link} class="group flex flex-col animacion-botones">
-        <div class="h-full p-8 border border-white/10 rounded-3xl bg-white/0.02 hover:bg-white/0.05 hover:border-primary-400/50 transition-all duration-500 flex flex-col items-center text-center backdrop-blur-sm">
-          
-          <div class="relative mb-6">
-             <div class="absolute inset-0 bg-primary-400/20 blur-xl rounded-full group-hover:bg-primary-400/40 transition-colors"></div>
-             
-             <div class="relative text-primary-400 w-12 h-12 [&>svg]:w-full [&>svg]:h-full transition-transform duration-500 group-hover:scale-110" 
-                  set:html={card.icon} />
-          </div>
-          
-          <h3 class="text-white text-xl font-bold tracking-tight leading-tight">
-            {card.title}
-          </h3>
+  <section
+    class="flex justify-center items-center px-6 py-12 lg:px-40 lg:py-24"
+  >
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full max-w-7xl"
+    >
+      {
+        cardsHome.map((card) => (
+          <a href={card.link} class="group flex flex-col animacion-botones">
+            <div class="h-full p-8 border border-white/10 rounded-3xl bg-white/0.02 hover:bg-white/0.05 hover:border-primary-400/50 transition-all duration-500 flex flex-col items-center text-center backdrop-blur-sm">
+              <div class="relative mb-6">
+                <div class="absolute inset-0 bg-primary-400/20 blur-xl rounded-full group-hover:bg-primary-400/40 transition-colors" />
 
-          <span class="hidden md:block mt-4 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm">
-             Ver más →
-          </span>
-        </div>
-      </a>    
-    ))}
-  </div>
-</section>
+                <div
+                  class="relative text-primary-400 w-12 h-12 [&>svg]:w-full [&>svg]:h-full transition-transform duration-500 group-hover:scale-110"
+                  set:html={card.icon}
+                />
+              </div>
 
+              <h3 class="text-white text-xl font-bold tracking-tight leading-tight">
+                {card.title}
+              </h3>
 
-
-
+              <span class="hidden md:block mt-4 text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm">
+                Ver más →
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
 </Layout>
 
 <style>
   :hover.animacion-botones {
-    @apply transition-transform duration-300 scale-105;
+    @apply scale-105 transition-transform duration-300;
   }
-
-
-  
 </style>
-

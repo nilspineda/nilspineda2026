@@ -15,5 +15,9 @@
     "astro": "^5.16.6",
     "resend": "^6.6.0",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.0",
+    "prettier-plugin-tailwindcss": "^0.7.2"
   }
 }

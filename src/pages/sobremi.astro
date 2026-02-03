@@ -1,15 +1,39 @@
 ---
-import LayoutNav from '../layouts/Layout-nav.astro';
+import LayoutNav from "../layouts/Layout-nav.astro";
 const titlePage = "Sobre Mi";
 ---
 
-
-<LayoutNav class="bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)] h-min-screen" title={titlePage}>
-  <section class="flex flex-col lg:flex-row justify-center items-center px-6 lg:px-40 lg:py-20">
-    <h1 class="text-white text-4xl md:text-6xl lg:text-7xl mt-4 font-medium text-center">
-   {titlePage}
+<LayoutNav
+  class="bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)] h-min-screen"
+  title={titlePage}
+>
+  <section
+    class="flex flex-col lg:flex-row justify-center items-center px-6 lg:px-40 lg:py-20"
+  >
+    <h1
+      class="text-white text-4xl md:text-6xl lg:text-7xl mt-4 font-medium text-center"
+    >
+      {titlePage}
     </h1>
   </section>
-    
-    
+
+  <section
+    class="flex flex-col lg:flex-row justify-center items-center px-6 lg:px-40"
+  >
+    <div class="w-1/2">
+      <p class="text-white text-xl">
+        Diseñador gráfico y desarrollador web apasionado por crear experiencias
+        visuales atractivas y funcionales. Con una sólida trayectoria en diseño
+        y desarrollo web, mi enfoque se centra en la innovación, la colaboración
+        y la superación de expectativas. Soy un profesional autodidacta, siempre
+        en busca de nuevas tendencias y tecnologías para ofrecer soluciones
+        creativas y de vanguardia. Mi mentalidad emprendedora y mi atención al
+        detalle me permiten entregar proyectos de alta calidad que impulsan el
+        éxito de mis clientes
+      </p>
+    </div>
+    <div class="w-1/4">
+      <img src="nils.webp" alt="" />
+    </div>
+  </section>
 </LayoutNav>
