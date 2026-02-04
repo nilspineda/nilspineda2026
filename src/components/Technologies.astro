@@ -1,0 +1,121 @@
+---
+const { class: className } = Astro.props;
+
+const designTechs = [
+  {
+    name: "Adobe XD",
+    image: "/icons/adobe-xd.svg",
+    color: "text-[#FF61F6]",
+  },
+  {
+    name: "Figma",
+    image: "/icons/figma.svg",
+    color: "text-[#F24E1E]",
+  },
+  {
+    name: "Premiere",
+    image: "/icons/premiere.svg",
+    color: "text-[#9999FF]",
+  },
+  {
+    name: "Illustrator",
+    image: "/icons/illustrator.svg",
+    color: "text-[#FF9A00]",
+  },
+  {
+    name: "Photoshop",
+    image: "/icons/photoshop.svg",
+    color: "text-[#31A8FF]",
+  },
+  {
+    name: "AfterEffects",
+    image: "/icons/after-effects.svg",
+    color: "text-[#D299FF]",
+  },
+];
+
+const webTechs = [
+  {
+    name: "html5",
+    image: "/icons/html5.svg",
+    color: "text-[#E34F26]",
+  },
+  {
+    name: "css",
+    image: "/icons/css.svg",
+    color: "text-[#1572B6]",
+  },
+  {
+    name: "tailwindcss",
+    image: "/icons/tailwindcss.svg",
+    color: "text-[#38B2AC]",
+  },
+  {
+    name: "Astro",
+    image: "/icons/astro.svg",
+    color: "text-white",
+  },
+  {
+    name: "cPanel",
+    image: "/icons/cPanel.svg",
+    color: "text-[#FF6C2C]",
+  },
+  {
+    name: "wordpress",
+    image: "/icons/wordpress.svg",
+    color: "text-[#21759B]",
+  },
+  {
+    name: "Elementor",
+    image: "/icons/elementor.svg",
+    color: "text-[#92003B]",
+  },
+  {
+    name: "Moodle",
+    image: "/icons/moodle.svg",
+    color: "text-[#F98012]",
+  },
+];
+---
+
+<section class="max-w-7xl mx-auto px-6 py-20">
+  <h2
+    class="text-white text-3xl md:text-5xl lg:text-5xl font-bold text-center mb-10"
+  >
+    Tecnologias
+  </h2>
+
+  <!-- Diseño Section -->
+  <h3 class="text-white text-2xl font-bold text-center mb-8">Diseño</h3>
+  <div class="flex flex-wrap justify-center gap-6 mb-16">
+    {
+      designTechs.map((tech) => (
+        <div class="bg-[#131a22]/80 border border-white/5 rounded-2xl p-6 w-32 md:w-40 flex flex-col items-center gap-4 hover:border-primary-400/30 transition-all duration-300 group hover:scale-105">
+          <img
+            src={tech.image}
+            alt={tech.name}
+            class="w-12 h-12 md:w-16 md:h-16 transition-transform duration-300 group-hover:scale-110"
+          />
+          <span class="text-gray-400 text-sm font-medium">{tech.name}</span>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Web Section -->
+  <h3 class="text-white text-2xl font-bold text-center mb-8">Web</h3>
+  <div class="flex flex-wrap justify-center gap-6">
+    {
+      webTechs.map((tech) => (
+        <div class="bg-[#131a22]/80 border border-white/5 rounded-2xl p-6 w-32 md:w-40 flex flex-col items-center gap-4 hover:border-primary-400/30 transition-all duration-300 group hover:scale-105">
+          <img
+            src={tech.image}
+            alt={tech.name}
+            class="w-12 h-12 md:w-16 md:h-16 transition-transform duration-300 group-hover:scale-110"
+          />
+          <span class="text-gray-400 text-sm font-medium">{tech.name}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>

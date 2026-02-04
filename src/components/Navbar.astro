@@ -1,42 +1,90 @@
-<div class="flex justify-between items-center p-4 lg:px-40"> <a href="/"><img src="../logo.svg" alt="logo Nils Pineda" class="w-32 md:w-48"></a>
+<div class="flex justify-between items-center p-4 lg:px-40">
+  <a href="/"
+    ><img src="../logo.svg" alt="logo Nils Pineda" class="w-32 md:w-48" /></a
+  >
 
-    <nav>
-        <ul class="hidden md:flex gap-8 text-white font-medium">
-            <li><a href="/" class="hover:text-primary-400 transition-colors">Inicio</a></li>
-            <li><a href="/portafolio" class="hover:text-primary-400 transition-colors">Portafolio</a></li>
-            <li><a href="/servicios" class="hover:text-primary-400 transition-colors">Servicios</a></li>
-            <li><a href="/blog" class="hover:text-primary-400 transition-colors">Blog</a></li>
-            <li><a href="/contacto" class="hover:text-primary-400 transition-colors">Contacto</a></li>
-        </ul>
+  <nav>
+    <ul class="hidden md:flex gap-8 text-white font-medium">
+      <li>
+        <a href="/" class="hover:text-primary-400 transition-colors">Inicio</a>
+      </li>
+      <li>
+        <a href="/sobremi" class="hover:text-primary-400 transition-colors"
+          >Sobre Mi</a
+        >
+      </li>
+      <li>
+        <a href="/portafolio" class="hover:text-primary-400 transition-colors"
+          >Portafolio</a
+        >
+      </li>
+      <li>
+        <a href="/servicios" class="hover:text-primary-400 transition-colors"
+          >Servicios</a
+        >
+      </li>
+      <li>
+        <a href="/blog" class="hover:text-primary-400 transition-colors">Blog</a
+        >
+      </li>
+      <li>
+        <a href="/contacto" class="hover:text-primary-400 transition-colors"
+          >Contacto</a
+        >
+      </li>
+    </ul>
 
-        <button class="md:hidden text-white p-2" id="menu-button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-        </button>
-    </nav>
+    <button class="md:hidden text-white p-2" id="menu-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-8 h-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+  </nav>
 </div>
 
-
 <script>
-    const menuButton = document.getElementById('menu-button');
-    const navMenu = document.createElement('div');
-    navMenu.classList.add('md:hidden', 'w-[90%]', 'bg-gray-800', 'text-white', 'p-4', 'absolute', 'top-26', 'right-4', 'rounded-lg', 'shadow-lg', 'hidden');
+  const menuButton = document.getElementById("menu-button");
+  const navMenu = document.createElement("div");
+  navMenu.classList.add(
+    "md:hidden",
+    "w-[90%]",
+    "bg-gray-800",
+    "text-white",
+    "p-4",
+    "absolute",
+    "top-26",
+    "right-4",
+    "rounded-lg",
+    "shadow-lg",
+    "hidden",
+  );
 
-    navMenu.innerHTML = `
+  navMenu.innerHTML = `
         <ul class="flex flex-col gap-4">
             <li><a href="/" class="hover:text-primary-400 transition-colors">Inicio</a></li>
+            <li><a href="/sobremi" class="hover:text-primary-400 transition-colors">Sobre Mi</a></li>
             <li><a href="/portafolio" class="hover:text-primary-400 transition-colors">Portafolio</a></li>
-            <li><a href="/servicios" class="hover:text-primary-400 transition-colors">Servicios</a></li>
+            <li><a href="#servicios" class="hover:text-primary-400 transition-colors">Servicios</a></li>
+            <li><a href="/blog" class="hover:text-primary-400 transition-colors">Blog</a></li>
             <li><a href="/contacto" class="hover:text-primary-400 transition-colors">Contacto</a></li>
         </ul>
     `;
 
-    document.body.appendChild(navMenu);
+  document.body.appendChild(navMenu);
 
-    if (menuButton) {
-        menuButton.addEventListener('click', () => {
-            navMenu.classList.toggle('hidden');
-        });
-    }
+  if (menuButton) {
+    menuButton.addEventListener("click", () => {
+      navMenu.classList.toggle("hidden");
+    });
+  }
 </script>
