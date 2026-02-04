@@ -1,57 +1,79 @@
 ---
-import '../styles/global.css'
-import Footer from '../components/Footer.astro';
-import Navbar from '../components/Navbar.astro';
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
 // Supports weights 100-900
-import '@fontsource-variable/dm-sans';
+import "@fontsource-variable/dm-sans";
 import BotonesFlotantes from "../components/BotonesFlotantes.astro";
-
-
 ---
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<!-- Primary Meta Tags -->
-<title>{Astro.props.title}</title>
-		<!-- Primary Meta Tags -->
-<title>Nils Pineda | Diseño Web Profesional y Soluciones Digitales</title>
-<meta name="title" content="Nils Pineda | Diseño Web Profesional y Soluciones Digitales" />
-<meta name="description" content="Transformamos ideas en experiencias digitales que conectan con tu audiencia. Con diseño y desarrollo a tu medida, damos vida a tu marca." />
+  <head>
+    <!-- Primary Meta Tags -->
+    <!-- Primary Meta Tags -->
+    <title>
+      {
+        Astro.props.title
+          ? `${Astro.props.title} | Nils Pineda`
+          : "Nils Pineda | Diseño Web Profesional y Soluciones Digitales"
+      }
+    </title>
+    <meta
+      name="title"
+      content="Nils Pineda | Diseño Web Profesional y Soluciones Digitales"
+    />
+    <meta
+      name="description"
+      content="Transformamos ideas en experiencias digitales que conectan con tu audiencia. Con diseño y desarrollo a tu medida, damos vida a tu marca."
+    />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://nilspineda2026.com/" />
-<meta property="og:title" content="Nils Pineda | Diseño Web Profesional y Soluciones Digitales" />
-<meta property="og:description" content="Transformamos ideas en experiencias digitales que conectan con tu audiencia. Con diseño y desarrollo a tu medida, damos vida a tu marca." />
-<meta property="og:image" content="./logonils.jpg" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nilspineda2026.com/" />
+    <meta
+      property="og:title"
+      content="Nils Pineda | Diseño Web Profesional y Soluciones Digitales"
+    />
+    <meta
+      property="og:description"
+      content="Transformamos ideas en experiencias digitales que conectan con tu audiencia. Con diseño y desarrollo a tu medida, damos vida a tu marca."
+    />
+    <meta property="og:image" content="./logonils.jpg" />
 
-<!-- X (Twitter) -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://metatags.io/" />
-<meta property="twitter:title" content="Nils Pineda | Diseño Web Profesional y Soluciones Digitales" />
-<meta property="twitter:description" content="Transformamos ideas en experiencias digitales que conectan con tu audiencia. Con diseño y desarrollo a tu medida, damos vida a tu marca." />
-<meta property="twitter:image" content="./logonils.jpg" />	
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://metatags.io/" />
+    <meta
+      property="twitter:title"
+      content="Nils Pineda | Diseño Web Profesional y Soluciones Digitales"
+    />
+    <meta
+      property="twitter:description"
+      content="Transformamos ideas en experiencias digitales que conectan con tu audiencia. Con diseño y desarrollo a tu medida, damos vida a tu marca."
+    />
+    <meta property="twitter:image" content="./logonils.jpg" />
 
-<!-- Meta Tags Generated with https://metatags.io -->
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/jpg" href="/favicon.jpg" />
-		
-	</head>
-	<body class="min-h-screen bg-fixed bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)]">
-		<Navbar />
-		<BotonesFlotantes />
-		<slot />
-		<Footer />
-	</body>
+    <!-- Meta Tags Generated with https://metatags.io -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/jpg" href="/favicon.jpg" />
+  </head>
+  <body
+    class="min-h-screen bg-fixed bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)]"
+  >
+    <Navbar />
+    <BotonesFlotantes />
+    <slot />
+    <Footer />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>

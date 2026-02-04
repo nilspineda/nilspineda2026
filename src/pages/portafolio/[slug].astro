@@ -2,29 +2,28 @@
 import LayoutNav from "../../layouts/Layout-nav.astro";
 import { getCollection, getEntryBySlug } from "astro:content";
 
+export const prerender = true;
+
 /* 1️⃣ Rutas estáticas */
 export async function getStaticPaths() {
   const portafolios = await getCollection("portafolio");
 
   return portafolios.map((portafolio) => ({
     params: { slug: portafolio.slug },
+    props: { portafolio }, // Pass the whole object as prop to avoid fetching again
   }));
 }
 
-/* 2️⃣ Slug */
-const slug = Astro.params.slug;
-if (!slug) throw new Error("Slug no definido");
-
-/* 3️⃣ Entrada */
-const portafolio = await getEntryBySlug("portafolio", slug);
+/* 2️⃣ Slug & Props */
+const { portafolio } = Astro.props;
 if (!portafolio) {
-  throw new Error(`Portafolio no encontrado: ${slug}`);
+  throw new Error("Portafolio prop missing");
 }
 
-/* 4️⃣ ⚠️ RENDER CORRECTO DEL MARKDOWN */
+/* 3️⃣ Render */
 const { Content } = await portafolio.render();
 
-/* 5️⃣ Formato fecha */
+/* 4️⃣ Formato fecha */
 const formatDate = (date: Date) =>
   new Intl.DateTimeFormat("es-ES", {
     day: "2-digit",
@@ -32,29 +31,52 @@ const formatDate = (date: Date) =>
     year: "numeric",
   }).format(new Date(date));
 ---
+
 <LayoutNav
   title={portafolio.data.title}
   class="bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)] min-h-screen"
 >
   <article class="px-6 lg:px-40 py-20 max-w-4xl mx-auto">
-    {portafolio.data.image && (
-      <img
-        src={portafolio.data.image}
-        alt={portafolio.data.title}
-        class="w-full rounded-2xl mb-10 object-cover"
-      />
-    )}
+    <a
+      href="/portafolio"
+      class="inline-flex items-center text-primary-400 hover:text-white mb-8 transition-colors"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5 mr-2"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+      Volver al portafolio
+    </a>
 
-    <h1 class="text-white text-4xl font-bold mb-3">
+    {
+      portafolio.data.image && (
+        <img
+          src={portafolio.data.image}
+          alt={portafolio.data.title}
+          class="w-full rounded-2xl mb-10 object-cover max-h-[500px]"
+        />
+      )
+    }
+
+    <h1 class="text-white text-4xl md:text-5xl font-bold mb-4 leading-tight">
       {portafolio.data.title}
     </h1>
 
-    <p class="text-gray-400 text-sm mb-10">
-      {formatDate(portafolio.data.date)}
+    <p class="text-gray-400 text-sm mb-10 border-b border-white/10 pb-6">
+      Realizado el {formatDate(portafolio.data.date)}
     </p>
 
     {/* ✅ CONTENIDO MARKDOWN */}
-    <div class="prose prose-invert max-w-none text-white">
+    <div class="prose prose-lg prose-invert max-w-none text-gray-300">
       <Content />
     </div>
   </article>

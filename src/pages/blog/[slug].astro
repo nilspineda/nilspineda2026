@@ -1,10 +1,12 @@
 ---
-import LayoutNav from '../../layouts/Layout-nav.astro';
+import LayoutNav from "../../layouts/Layout-nav.astro";
+
+export const prerender = true;
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob('../../content/blog/*.md');
+  const posts = await Astro.glob("../../content/blog/*.md");
 
-  return posts.map(post => ({
+  return posts.map((post) => ({
     params: { slug: post.frontmatter.slug },
     props: { post },
   }));
@@ -14,36 +16,59 @@ const { post } = Astro.props;
 
 // Formato fecha
 const formatDate = (date) =>
-  new Intl.DateTimeFormat('es-ES', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
+  new Intl.DateTimeFormat("es-ES", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
   }).format(new Date(date));
 ---
+
 <LayoutNav
   title={post.frontmatter.title}
   class="bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)] min-h-screen"
 >
   <article class="px-6 lg:px-40 py-20 max-w-4xl mx-auto">
-    {/* Imagen destacada */}
-    {post.frontmatter.image && (
-      <img
-        src={post.frontmatter.image}
-        alt={post.frontmatter.title}
-        class="w-full rounded-2xl mb-10 object-cover"
-      />
-    )}
+    <a
+      href="/blog"
+      class="inline-flex items-center text-primary-400 hover:text-white mb-8 transition-colors"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5 mr-2"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+      Volver al blog
+    </a>
 
-    <h1 class="text-white text-4xl font-bold mb-3">
+    {/* Imagen destacada */}
+    {
+      post.frontmatter.image && (
+        <img
+          src={post.frontmatter.image}
+          alt={post.frontmatter.title}
+          class="w-full rounded-2xl mb-10 object-cover max-h-[500px]"
+        />
+      )
+    }
+
+    <h1 class="text-white text-4xl md:text-5xl font-bold mb-4 leading-tight">
       {post.frontmatter.title}
     </h1>
 
-    <p class="text-gray-400 text-sm mb-10">
-      {formatDate(post.frontmatter.date)}
+    <p class="text-gray-400 text-sm mb-10 border-b border-white/10 pb-6">
+      Publicado el {formatDate(post.frontmatter.date)}
     </p>
 
     {/* Contenido del markdown */}
-    <div class="prose prose-invert max-w-none">
+    <div class="prose prose-lg prose-invert max-w-none text-gray-300">
       <post.Content />
     </div>
   </article>
