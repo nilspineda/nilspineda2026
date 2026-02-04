@@ -1,110 +1,111 @@
-# 🚀 Website 2026 – Nils Pineda
-
-Sitio web personal desarrollado con **Astro** y **Tailwind CSS**, con sistema de **blog y portafolio dinámicos**, paginación estática y contenido basado en **Content Collections**.
+<div align="center">
+  <img src="public/logo.svg" alt="Nils Pineda Logo" width="120" />
+  <h1>Nils Pineda | Portfolio 2026</h1>
+  <p>
+    <strong>Diseñador Gráfico & Desarrollador Web</strong> <br>
+    Un portafolio moderno, rápido y escalable construido con el rendimiento en mente.
+  </p>
+  
+  <p>
+    <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-5.0-FF5D01?style=for-the-badge&logo=astro&logoColor=white" alt="Astro"></a>
+    <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"></a>
+    <a href="https://vercel.com"><img src="https://img.shields.io/badge/Vercel-Deploy-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel"></a>
+  </p>
+</div>
 
 ---
 
-## 🧱 Stack tecnológico
+## � Sobre el Proyecto
 
-- ⚡ **Astro**
-- 🎨 **Tailwind CSS**
-- 🗂️ **Astro Content Collections**
-- 📝 Markdown (`.md`)
-- ☁️ Deploy en **Vercel**
-- 🧠 SSG (Static Site Generation)
+Este es el repositorio oficial del sitio web personal de **Nils Pineda** para el año 2026. Diseñado para exhibir experiencia en **diseño gráfico, desarrollo web y creación de contenido**. El sitio combina una estética moderna ("Glassmorphism", gradientes oscuros) con la velocidad inigualable de una arquitectura de sitio estático.
+
+### ✨ Características Principales
+
+- **⚡ Rendimiento Extremo:** Generación de sitio estático (SSG) con Astro.
+- **🎨 Diseño Moderno:** Estilizado con Tailwind CSS, utilizando efectos de vidrio, gradientes radiales y animaciones fluidas.
+- **📱 Totalmente Responsivo:** Adaptado perfectamente para móviles, tablets y escritorio.
+- **📝 Blog & Portafolio:** Gestionado a través de **Astro Content Collections** para un manejo de contenido tipo CMS pero basado en archivos.
+- **🛠️ Secciones Dinámicas:**
+  - **Servicios:** Grid interactivo de oferta de servicios.
+  - **Tecnologías:** Showcase de herramientas de Diseño (Adobe Suite, Figma) y Desarrollo (Astro, React, WordPress).
+  - **Sobre Mí:** Línea de tiempo de experiencia laboral y biografía.
 
 ---
 
-## 📁 Estructura del proyecto
+## 🛠️ Stack Tecnológico
 
-```txt
+El proyecto utiliza tecnologías de vanguardia para asegurar mantenibilidad y performance:
+
+- **Core:** [Astro](https://astro.build) (Framework Web)
+- **Estilos:** [Tailwind CSS](https://tailwindcss.com) + [FontSource](https://fontsource.org) (DM Sans)
+- **Iconos:** SVG optimizados y personalizados.
+- **Contenido:** Markdown (`.md`) con Content Collections.
+- **Despliegue:** Optimizado para Vercel / Netlify.
+
+---
+
+## 📂 Estructura del Proyecto
+
+```bash
 src/
-├── content/
-│   ├── blog/
-│   │   └── *.md
-│   ├── portafolio/
-│   │   └── *.md
-│   └── config.ts
-│
-├── layouts/
-│   └── Layout-nav.astro
-│
-├── pages/
-│   ├── blog/
-│   │   ├── index.astro
-│   │   ├── [slug].astro
-│   │   └── page/
-│   │       └── [page].astro
-│   │
-│   ├── portafolio/
-│   │   └── [slug].astro
-│   │
-│   ├── index.astro
-│   └── 404.astro
-│
-└── styles/
-✍️ Blog
-📌 Listado
-Ruta: /blog
+├── components/      # Componentes UI reutilizables (Navbar, Services, Technologies...)
+├── content/         # "Base de datos" en Markdown
+│   ├── blog/        # Artículos del blog
+│   └── portafolio/  # Proyectos del portafolio
+├── layouts/         # Plantillas de páginas (Layout-nav, Layout principal)
+├── pages/           # Rutas del sitio
+│   ├── index.astro  # Página de Inicio (Home)
+│   ├── sobremi.astro
+│   ├── servicios.astro
+│   ├── blog/        # Sistema de paginación del blog
+│   └── portafolio/  # Páginas dinámicas de proyectos
+└── styles/          # Estilos globales y configuraciones de Tailwind
+```
 
-Máximo 9 posts por página
-
-Paginación:
-
-/blog/page/2
-
-/blog/page/3
-
-📄 Detalle
-Ruta: /blog/[slug]
-
-Renderiza contenido Markdown con <Content />
-
-🏷️ Frontmatter ejemplo
-md
-Copiar código
 ---
-title: "James Saenz"
-slug: "jamez-saenz"
-image: "/jamesSaenz.png"
-description: "Descripción del post"
-date: 2025-10-03
-draft: false
-tags: ["web", "Diseño"]
+
+## ⚙️ Instalación y Desarrollo
+
+Si deseas clonar y ejecutar este proyecto localmente:
+
+1.  **Clonar el repositorio:**
+
+    ```bash
+    git clone https://github.com/tu-usuario/nilspineda2026.git
+    cd nilspineda2026
+    ```
+
+2.  **Instalar dependencias:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Iniciar servidor de desarrollo:**
+
+    ```bash
+    npm run dev
+    ```
+
+    Visita `http://localhost:4321` en tu navegador.
+
+4.  **Construir para producción:**
+    ```bash
+    npm run build
+    ```
+
 ---
-⚠️ Los posts con draft: true no se muestran en producción.
 
-🗂️ Portafolio
-Ruta: /portafolio/[slug]
+## 🎨 Guía de Estilo Rápida
 
-Generado con getStaticPaths
+- **Colores Brand:**
+  - Primary: `#2ab092` (Verde/Teal vibrante)
+  - Background: `#131a22` (Dark Blue/Grey)
+  - Accents: Gradientes radiales para profundidad.
+- **Tipografía:** `DM Sans` (Variable weight).
 
-Contenido desde src/content/portafolio
-
-Ejemplo:
-
-md
-Copiar código
 ---
-title: "Proyecto X"
-slug: "proyecto-x"
-image: "/proyecto.png"
-tags: ["web", "branding"]
----
-⚙️ Instalación y uso
-1️⃣ Instalar dependencias
-bash
-Copiar código
-npm install
-2️⃣ Desarrollo local
-bash
-Copiar código
-npm run dev
-3️⃣ Build producción
-bash
-Copiar código
-npm run build
-4️⃣ Preview
-bash
-Copiar código
-npm run preview
+
+<div align="center">
+  Hecho con ❤️ y ☕ por <strong>Nils Pineda</strong>
+</div>
