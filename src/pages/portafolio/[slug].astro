@@ -34,9 +34,11 @@ const formatDate = (date: Date) =>
 
 <LayoutNav
   title={portafolio.data.title}
-  class="bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)] min-h-screen"
+  description={portafolio.data.description ||
+    `Proyecto destacado: ${portafolio.data.title} realizado por Nils Pineda.`}
+  image={portafolio.data.image}
 >
-  <article class="px-6 lg:px-40 py-20 max-w-4xl mx-auto">
+  <article class="px-6 lg:px-40 py-20 max-w-6xl mx-auto">
     <a
       href="/portafolio"
       class="inline-flex items-center text-primary-400 hover:text-white mb-8 transition-colors"

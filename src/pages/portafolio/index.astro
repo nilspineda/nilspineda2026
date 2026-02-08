@@ -9,11 +9,14 @@ const formatDate = (date: Date) =>
     year: "numeric",
   }).format(new Date(date));
 
-const portafolios = await getCollection("portafolio");
+const portafolios = (await getCollection("portafolio")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
 <LayoutNav
-  class="bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)] h-min-screen"
+  title="Portafolio | Nils Pineda - Proyectos Destacados"
+  description="Explora mi portafolio de diseño y desarrollo web. Descubre cómo he ayudado a marcas a destacar con soluciones digitales personalizadas."
 >
   <section
     class="flex flex-col lg:flex-row justify-center items-center px-6 lg:px-40 lg:py-20"
@@ -35,7 +38,7 @@ const portafolios = await getCollection("portafolio");
             class="group block rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
           >
             {/* Imagen */}
-            <div class="h-48 w-full overflow-hidden">
+            <div class="h-72 w-full overflow-hidden">
               <img
                 src={portafolio.data.image}
                 alt={portafolio.data.title}
