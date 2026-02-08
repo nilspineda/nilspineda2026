@@ -1,6 +1,6 @@
 ---
 title: "James Saenz"
-slug: "James2"
+slug: "james-ginecologo"
 image: "/jamesSaenz.png"
 url: "https://jamessaenzginecologooncologo.com/"
 description: "Tu salud y bienestar son mi prioridad. Brindo atención médica especializada en ginecología oncológica, con altos estándares de formación académica y un trato humano, respetuoso y cercano, acompañándote en cada etapa de tu cuidado."
