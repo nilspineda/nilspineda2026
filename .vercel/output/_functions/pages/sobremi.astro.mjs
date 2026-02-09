@@ -1,6 +1,6 @@
 import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_CSf9IKit.mjs';
 import 'piccolore';
-import { $ as $$LayoutNav } from '../chunks/Layout-nav_B8LH9BPt.mjs';
+import { $ as $$LayoutNav } from '../chunks/Layout-nav_ASv_iRnz.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Sobremi = createComponent(($$result, $$props, $$slots) => {
