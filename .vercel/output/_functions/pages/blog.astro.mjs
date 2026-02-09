@@ -1,9 +1,9 @@
 import { b as createAstro, c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_CSf9IKit.mjs';
 import 'piccolore';
-import { $ as $$LayoutNav } from '../chunks/Layout-nav_ASv_iRnz.mjs';
+import { $ as $$LayoutNav } from '../chunks/Layout-nav_wb8Kx18L.mjs';
 export { renderers } from '../renderers.mjs';
 
-const $$Astro = createAstro("https://nilspineda2026.com");
+const $$Astro = createAstro("https://nilspineda2026.vercel.app/");
 const $$Index = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;

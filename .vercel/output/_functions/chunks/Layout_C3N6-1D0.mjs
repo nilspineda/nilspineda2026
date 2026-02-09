@@ -4,7 +4,7 @@ import 'piccolore';
 import { $ as $$BotonesFlotantes, a as $$Footer } from './BotonesFlotantes_BEoR_CVg.mjs';
 /* empty css                         */
 
-const $$Astro = createAstro("https://nilspineda2026.com");
+const $$Astro = createAstro("https://nilspineda2026.vercel.app/");
 const $$Layout = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Layout;

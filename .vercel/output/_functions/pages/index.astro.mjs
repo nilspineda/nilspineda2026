@@ -1,6 +1,6 @@
 import { c as createComponent, m as maybeRenderHead, u as unescapeHTML, a as renderTemplate, b as createAstro, d as addAttribute, r as renderComponent } from '../chunks/astro/server_CSf9IKit.mjs';
 import 'piccolore';
-import { $ as $$Layout } from '../chunks/Layout_Bd21bFXt.mjs';
+import { $ as $$Layout } from '../chunks/Layout_C3N6-1D0.mjs';
 import 'clsx';
 /* empty css                                 */
 export { renderers } from '../renderers.mjs';
@@ -36,7 +36,7 @@ const $$Services = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<section id="servicios" class="max-w-7xl mx-auto px-6 py-20"> <h2 class="text-white text-4xl md:text-5xl lg:text-6xl font-medium text-center mb-20"> ${titlePage} </h2> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> ${services.map((service) => renderTemplate`<div class="group relative p-8 rounded-lg border border-white/5 bg-[#131a22]/50 hover:bg-[#131a22]/80 hover:border-primary-400/50 transition-all duration-300 backdrop-blur-sm flex flex-col items-center justify-center gap-6 min-h-[200px]"> <div class="text-primary-400 group-hover:scale-110 transition-transform duration-300">${unescapeHTML(service.icon)}</div> <h3 class="text-white text-xl md:text-2xl font-medium text-center"> ${service.title} </h3> <div class="absolute inset-0 rounded-lg bg-primary-400/0 group-hover:bg-primary-400/5 transition-colors duration-300"></div> </div>`)} </div> </section>`;
 }, "D:/Web/nilspineda2026/src/components/Services.astro", void 0);
 
-const $$Astro = createAstro("https://nilspineda2026.com");
+const $$Astro = createAstro("https://nilspineda2026.vercel.app/");
 const $$Technologies = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Technologies;

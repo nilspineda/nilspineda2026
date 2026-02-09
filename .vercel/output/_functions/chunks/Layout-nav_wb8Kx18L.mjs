@@ -9,7 +9,7 @@ const $$Navbar = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<div class="flex justify-between items-center p-4 lg:px-40"> <a href="/"><img src="../logo.svg" alt="logo Nils Pineda" class="w-32 md:w-48"></a> <nav> <ul class="hidden md:flex gap-8 text-white font-medium"> <li> <a href="/" class="hover:text-primary-400 transition-colors">Inicio</a> </li> <li> <a href="/sobremi" class="hover:text-primary-400 transition-colors">Sobre Mi</a> </li> <li> <a href="/portafolio" class="hover:text-primary-400 transition-colors">Portafolio</a> </li> <li> <a href="/blog" class="hover:text-primary-400 transition-colors">Blog</a> </li> <li> <a href="/contacto" class="hover:text-primary-400 transition-colors">Contacto</a> </li> </ul> <button class="md:hidden text-white p-2" id="menu-button"> <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path> </svg> </button> </nav> </div> ${renderScript($$result, "D:/Web/nilspineda2026/src/components/Navbar.astro?astro&type=script&index=0&lang.ts")}`;
 }, "D:/Web/nilspineda2026/src/components/Navbar.astro", void 0);
 
-const $$Astro = createAstro("https://nilspineda2026.com");
+const $$Astro = createAstro("https://nilspineda2026.vercel.app/");
 const $$LayoutNav = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$LayoutNav;
