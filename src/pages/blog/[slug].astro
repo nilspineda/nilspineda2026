@@ -1,21 +1,32 @@
 ---
+import type { GetStaticPaths, MarkdownInstance } from "astro";
 import LayoutNav from "../../layouts/Layout-nav.astro";
 
 export const prerender = true;
 
-export async function getStaticPaths() {
-  const posts = await Astro.glob("../../content/blog/*.md");
+type BlogFrontmatter = {
+  title: string;
+  slug: string;
+  date: string | Date;
+  description?: string;
+  excerpt?: string;
+  image?: string;
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts: MarkdownInstance<BlogFrontmatter>[] =
+    await Astro.glob<BlogFrontmatter>("../../content/blog/*.md");
 
   return posts.map((post) => ({
     params: { slug: post.frontmatter.slug },
     props: { post },
   }));
-}
+};
 
-const { post } = Astro.props;
+const { post } = Astro.props as { post: MarkdownInstance<BlogFrontmatter> };
 
 // Formato fecha
-const formatDate = (date) =>
+const formatDate = (date: string | Date) =>
   new Intl.DateTimeFormat("es-ES", {
     day: "2-digit",
     month: "long",
@@ -57,7 +68,7 @@ const formatDate = (date) =>
         <img
           src={post.frontmatter.image}
           alt={post.frontmatter.title}
-          class="w-full rounded-2xl mb-10 object-cover max-h-[500px]"
+          class="w-full rounded-2xl mb-10 object-cover max-h-125"
         />
       )
     }
