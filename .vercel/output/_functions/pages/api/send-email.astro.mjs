@@ -4,7 +4,7 @@ export { renderers } from '../../renderers.mjs';
 const prerender = false;
 const POST = async ({ request }) => {
   try {
-    const apiKey = "tu_api_key_aqui";
+    const apiKey = "re_6ZiSGCYo_EgzcJ3e4WR9EDiCxKxxqosbv";
     if (!apiKey) ;
     const resend = new Resend(apiKey);
     const body = await request.json();
