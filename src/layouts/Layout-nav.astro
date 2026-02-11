@@ -2,7 +2,6 @@
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
-// Supports weights 100-900
 import "@fontsource-variable/dm-sans";
 import BotonesFlotantes from "../components/BotonesFlotantes.astro";
 
@@ -18,7 +17,19 @@ const {
   image = "/logonils.jpg",
 } = Astro.props;
 
+// URL canónica segura
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Imagen absoluta segura (soporta relativas y absolutas)
+let imageURL;
+
+try {
+  imageURL = image?.startsWith("http")
+    ? image
+    : new URL(image, Astro.site).toString();
+} catch {
+  imageURL = new URL("/logonils.jpg", Astro.site).toString();
+}
 ---
 
 <!doctype html>
@@ -32,23 +43,23 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:image" content={imageURL} />
 
     <!-- X (Twitter) -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    <meta property="twitter:image" content={imageURL} />
 
-    <!-- Meta Tags Generated with https://metatags.io -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/jpg" href="/favicon.jpg" />
   </head>
+
   <body
     class="min-h-screen bg-fixed bg-[radial-gradient(125%_125%_at_50%_10%,#131a22_60%,#2ab092_150%)]"
   >

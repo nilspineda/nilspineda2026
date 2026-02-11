@@ -1,13 +1,12 @@
 import { defineConfig } from "astro/config";
-import vercel from "@astrojs/vercel/serverless"; // o hybrid si usas static + server
+import vercel from "@astrojs/vercel/serverless";
 
 export default defineConfig({
-  output: "server", // o 'hybrid' si quieres páginas estáticas + rutas dinámicas
+  site: "https://nilspineda.com", // 👈 ESTA LÍNEA FALTABA
+
+  output: "server",
+
   adapter: vercel({
-    // Opcional pero recomendado
     webAnalytics: { enabled: true },
-    // Si usas edge functions (más rápido)
-    // edgeMiddleware: true,
   }),
-  // ... resto de tu config
 });
