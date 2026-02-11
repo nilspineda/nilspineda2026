@@ -4,7 +4,7 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   site: "https://nilspineda.com", // 👈 ESTA LÍNEA FALTABA
 
-  output: "server",
+  output: "hybrid",
 
   adapter: vercel({
     webAnalytics: { enabled: true },
