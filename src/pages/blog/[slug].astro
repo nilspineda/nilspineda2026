@@ -1,29 +1,22 @@
 ---
-import type { GetStaticPaths, MarkdownInstance } from "astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
 import LayoutNav from "../../layouts/Layout-nav.astro";
 
 export const prerender = true;
 
-type BlogFrontmatter = {
-  title: string;
-  slug: string;
-  date: string | Date;
-  description?: string;
-  excerpt?: string;
-  image?: string;
-};
-
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts: MarkdownInstance<BlogFrontmatter>[] =
-    await Astro.glob<BlogFrontmatter>("../../content/blog/*.md");
+  const posts = await getCollection("blog");
 
   return posts.map((post) => ({
-    params: { slug: post.frontmatter.slug },
+    params: { slug: post.slug },
     props: { post },
   }));
 };
 
-const { post } = Astro.props as { post: MarkdownInstance<BlogFrontmatter> };
+const { post } = Astro.props as { post: CollectionEntry<"blog"> };
+
+const { Content } = await post.render();
 
 // Formato fecha
 const formatDate = (date: string | Date) =>
@@ -35,11 +28,10 @@ const formatDate = (date: string | Date) =>
 ---
 
 <LayoutNav
-  title={post.frontmatter.title}
-  description={post.frontmatter.description ||
-    post.frontmatter.excerpt ||
-    `Lee el artículo ${post.frontmatter.title} en el blog de Nils Pineda.`}
-  image={post.frontmatter.image}
+  title={post.data.title}
+  description={post.data.description ||
+    `Lee el artículo ${post.data.title} en el blog de Nils Pineda.`}
+  image={post.data.image}
 >
   <article class="px-6 lg:px-40 py-20 max-w-4xl mx-auto">
     <a
@@ -64,26 +56,26 @@ const formatDate = (date: string | Date) =>
 
     {/* Imagen destacada */}
     {
-      post.frontmatter.image && (
+      post.data.image && (
         <img
-          src={post.frontmatter.image}
-          alt={post.frontmatter.title}
+          src={post.data.image}
+          alt={post.data.title}
           class="w-full rounded-2xl mb-10 object-cover max-h-125"
         />
       )
     }
 
     <h1 class="text-white text-4xl md:text-5xl font-bold mb-4 leading-tight">
-      {post.frontmatter.title}
+      {post.data.title}
     </h1>
 
     <p class="text-gray-400 text-sm mb-10 border-b border-white/10 pb-6">
-      Publicado el {formatDate(post.frontmatter.date)}
+      Publicado el {formatDate(post.data.date)}
     </p>
 
     {/* Contenido del markdown */}
     <div class="prose prose-lg prose-invert max-w-none text-gray-300">
-      <post.Content />
+      <Content />
     </div>
   </article>
 </LayoutNav>

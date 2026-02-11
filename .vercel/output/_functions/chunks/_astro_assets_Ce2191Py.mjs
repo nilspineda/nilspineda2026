@@ -1,6 +1,6 @@
 import { j as joinPaths, i as isRemotePath } from './path_tbLlI_c1.mjs';
-import { A as AstroError, ad as ExpectedImage, ae as LocalImageUsedWrongly, af as MissingImageDimension, ag as UnsupportedImageFormat, ah as IncompatibleDescriptorOptions, ai as UnsupportedImageConversion, aj as toStyleString, ak as NoImageMetadata, al as FailedToFetchRemoteImageDimensions, am as ExpectedImageOptions, an as ExpectedNotESMImage, ao as InvalidImageService, b as createAstro, c as createComponent, ap as ImageMissingAlt, m as maybeRenderHead, d as addAttribute, aq as spreadAttributes, a as renderTemplate, ar as ExperimentalFontsNotEnabled, as as FontFamilyNotFound, u as unescapeHTML } from './astro/server_CSf9IKit.mjs';
-import { D as DEFAULT_OUTPUT_FORMAT, a as VALID_SUPPORTED_FORMATS, b as DEFAULT_HASH_PROPS } from './consts_BmVDRGlB.mjs';
+import { A as AstroError, ac as ExpectedImage, ad as LocalImageUsedWrongly, ae as MissingImageDimension, af as UnsupportedImageFormat, ag as IncompatibleDescriptorOptions, ah as UnsupportedImageConversion, ai as toStyleString, aj as NoImageMetadata, ak as FailedToFetchRemoteImageDimensions, al as ExpectedImageOptions, am as ExpectedNotESMImage, an as InvalidImageService, b as createAstro, c as createComponent, ao as ImageMissingAlt, m as maybeRenderHead, d as addAttribute, ap as spreadAttributes, a as renderTemplate, aq as ExperimentalFontsNotEnabled, ar as FontFamilyNotFound, u as unescapeHTML } from './astro/server_cKzBliH5.mjs';
+import { D as DEFAULT_HASH_PROPS, a as DEFAULT_OUTPUT_FORMAT, b as VALID_SUPPORTED_FORMATS } from './consts_Du7EM0Nf.mjs';
 import { i as isRemoteAllowed, t as typeHandlers, a as types } from './index_CZWCDbwp.mjs';
 import * as mime from 'mrmime';
 import 'clsx';
@@ -128,13 +128,6 @@ function isLocalService(service) {
   }
   return "transform" in service;
 }
-function parseQuality(quality) {
-  let result = parseInt(quality);
-  if (Number.isNaN(result)) {
-    return quality;
-  }
-  return result;
-}
 const sortNumeric = (a, b) => a - b;
 function verifyOptions(options) {
   if (!options.src || !isRemoteImage(options.src) && !isESMImportedImage(options.src)) {
@@ -188,6 +181,7 @@ function verifyOptions(options) {
   }
 }
 const baseService = {
+  propertiesToHash: DEFAULT_HASH_PROPS,
   validateOptions(options) {
     if (isESMImportedImage(options.src) && options.src.format === "svg") {
       options.format = "svg";
@@ -475,7 +469,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_0PvopOlQ.mjs'
+      './build-service_DIqCeDP6.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -630,7 +624,7 @@ async function getImage$1(options, imageConfig) {
   };
 }
 
-const $$Astro$2 = createAstro("https://nilspineda.com");
+const $$Astro$2 = createAstro("https://www.nilspineda.com");
 const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$Image;
@@ -659,7 +653,7 @@ const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<img${addAttribute(image.src, "src")}${spreadAttributes(attributes)}${addAttribute(className, "class")}>`;
 }, "D:/Web/nilspineda2026/node_modules/astro/components/Image.astro", void 0);
 
-const $$Astro$1 = createAstro("https://nilspineda.com");
+const $$Astro$1 = createAstro("https://www.nilspineda.com");
 const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$Picture;
@@ -769,7 +763,7 @@ function checkWeight(input, target) {
   return input === target;
 }
 
-const $$Astro = createAstro("https://nilspineda.com");
+const $$Astro = createAstro("https://www.nilspineda.com");
 const $$Font = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Font;
@@ -790,7 +784,7 @@ const $$Font = createComponent(($$result, $$props, $$slots) => {
 }, "D:/Web/nilspineda2026/node_modules/astro/components/Font.astro", void 0);
 
 const assetQueryParams = undefined;
-							const imageConfig = {"endpoint":{"route":"/_image"},"service":{"entrypoint":"astro/assets/services/sharp","config":{}},"domains":[],"remotePatterns":[],"responsiveStyles":false};
+							const imageConfig = {"endpoint":{"route":"/_image"},"service":{"entrypoint":"@astrojs/vercel/build-image-service","config":{"sizes":[640,750,828,1080,1200,1920,2048,3840],"domains":[],"remotePatterns":[]}},"domains":[],"remotePatterns":[],"responsiveStyles":false,"breakpoints":[640,750,828,1080,1200,1920,2048,3840]};
 							Object.defineProperty(imageConfig, 'assetQueryParams', {
 								value: assetQueryParams,
 								enumerable: false,
@@ -807,4 +801,4 @@ const _astro_assets = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePrope
   isLocalService
 }, Symbol.toStringTag, { value: 'Module' }));
 
-export { _astro_assets as _, baseService as b, getConfiguredImageService as g, imageConfig as i, parseQuality as p };
+export { _astro_assets as _, isESMImportedImage as a, baseService as b, getConfiguredImageService as g, imageConfig as i };

@@ -20,45 +20,27 @@
 			"dest": "_render"
 		},
 		{
-			"src": "^/404/?$",
-			"dest": "_render"
-		},
-		{
 			"src": "^/api/send-email/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/blog/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/contacto/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/portafolio/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/servicios/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/sobremi/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/testimonios/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/$",
-			"dest": "_render"
-		},
-		{
 			"src": "^/.*$",
-			"dest": "_render",
+			"dest": "/404.html",
 			"status": 404
 		}
-	]
+	],
+	"images": {
+		"sizes": [
+			640,
+			750,
+			828,
+			1080,
+			1200,
+			1920,
+			2048,
+			3840
+		],
+		"domains": [],
+		"remotePatterns": []
+	}
 }
