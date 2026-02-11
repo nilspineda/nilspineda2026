@@ -6,7 +6,7 @@ url: "https://website-johan.vercel.app/"
 description: "Tu salud y bienestar son mi prioridad. Brindo atención médica especializada en ginecología oncológica, con altos estándares de formación académica y un trato humano, respetuoso y cercano, acompañándote en cada etapa de tu cuidado."
 date: 2025-10-03
 draft: false
-tags: ["web"]
+tags: ["web" , "Web design"]
 ---
 
 ### <a href="https://website-johan.vercel.app/" style="background-color:#28af90; color:#fff; padding:10px; border-radius:10px; margin-top:30px; display:inline-block;margin-bottom:15px;">Visita el sitio web</a>

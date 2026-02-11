@@ -1,7 +1,7 @@
 ---
-title: "Marcela Galan Podologia"
-slug: "marcela-podologa"
-image: "/assets/marcelagalan.jpg"
+title: "CyberWoman"
+slug: "cyberwoman"
+image: "/assets/cyberwoman.jpg"
 url: "https://marcelagalanpodologia.com/"
 description: "Tu salud y bienestar son mi prioridad. Brindo atención médica especializada en ginecología oncológica, con altos estándares de formación académica y un trato humano, respetuoso y cercano, acompañándote en cada etapa de tu cuidado."
 date: 2025-02-08
