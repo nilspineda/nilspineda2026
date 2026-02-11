@@ -170,8 +170,16 @@ import LayoutNav from "../layouts/Layout-nav.astro";
         body: JSON.stringify(data),
       });
 
+      // Verificar que la respuesta sea JSON
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        const text = await response.text();
+        console.error("Respuesta no-JSON:", text);
+        throw new Error(`Servidor retornó: ${text.substring(0, 100)}`);
+      }
+
       const result = (await response.json()) as {
-        success: boolean;
+        success?: boolean;
         message?: string;
         error?: string;
         details?: string;
@@ -184,7 +192,7 @@ import LayoutNav from "../layouts/Layout-nav.astro";
         form.reset();
       } else {
         const errorMsg = result.error || "Error al enviar el mensaje";
-        const detailMsg = result.details ? ` (${result.details})` : "";
+        const detailMsg = result.details ? ` - ${result.details}` : "";
         throw new Error(errorMsg + detailMsg);
       }
     } catch (error) {
@@ -192,10 +200,7 @@ import LayoutNav from "../layouts/Layout-nav.astro";
         error instanceof Error ? error.message : "Error desconocido";
       console.error("Formulario error:", errorText);
 
-      status!.innerText = `❌ ${errorText.substring(0, 60)}...`;
-      if (errorText.length > 60) {
-        status!.innerText += "\n\nIntenta por WhatsApp: 📱";
-      }
+      status!.innerText = `❌ ${errorText.substring(0, 80)}`;
       status!.className =
         "text-red-400 text-center text-sm font-medium mt-2 block";
     } finally {
