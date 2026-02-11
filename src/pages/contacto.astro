@@ -126,6 +126,35 @@ import LayoutNav from "../layouts/Layout-nav.astro";
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    // Validación básica del frontend
+    const name = (
+      form.querySelector("input[name='name']") as HTMLInputElement
+    )?.value.trim();
+    const email = (
+      form.querySelector("input[name='email']") as HTMLInputElement
+    )?.value.trim();
+    const message = (
+      form.querySelector("textarea[name='message']") as HTMLTextAreaElement
+    )?.value.trim();
+
+    if (!name || !email || !message) {
+      status!.innerText = "Por favor completa todos los campos.";
+      status!.className =
+        "text-yellow-400 text-center text-sm font-medium mt-2 block";
+      status!.classList.remove("hidden");
+      return;
+    }
+
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      status!.innerText = "Por favor ingresa un email válido.";
+      status!.className =
+        "text-yellow-400 text-center text-sm font-medium mt-2 block";
+      status!.classList.remove("hidden");
+      return;
+    }
+
     // Estado de carga
     btn.disabled = true;
     btnText!.innerText = "Enviando...";
@@ -141,21 +170,38 @@ import LayoutNav from "../layouts/Layout-nav.astro";
         body: JSON.stringify(data),
       });
 
-      if (response.ok) {
-        status!.innerText = "¡Mensaje enviado! Te escribiré pronto.";
+      const result = (await response.json()) as {
+        success: boolean;
+        message?: string;
+        error?: string;
+        details?: string;
+      };
+
+      if (response.ok && result.success) {
+        status!.innerText = "¡Mensaje enviado! Te escribiré pronto. 🎉";
         status!.className =
           "text-primary-400 text-center text-sm font-medium mt-2 block animate-bounce";
         form.reset();
       } else {
-        throw new Error();
+        const errorMsg = result.error || "Error al enviar el mensaje";
+        const detailMsg = result.details ? ` (${result.details})` : "";
+        throw new Error(errorMsg + detailMsg);
       }
     } catch (error) {
-      status!.innerText = "Error al enviar. Intenta por WhatsApp.";
+      const errorText =
+        error instanceof Error ? error.message : "Error desconocido";
+      console.error("Formulario error:", errorText);
+
+      status!.innerText = `❌ ${errorText.substring(0, 60)}...`;
+      if (errorText.length > 60) {
+        status!.innerText += "\n\nIntenta por WhatsApp: 📱";
+      }
       status!.className =
         "text-red-400 text-center text-sm font-medium mt-2 block";
     } finally {
       btn.disabled = false;
       btnText!.innerText = "Enviar mensaje";
+      status!.classList.remove("hidden");
     }
   });
 </script>

@@ -55,9 +55,15 @@ export const POST: APIRoute = async ({ request }) => {
       `,
     });
 
+    if (adminEmail.error) {
+      throw new Error(
+        `Error enviando email al admin: ${adminEmail.error.message}`,
+      );
+    }
+
     // Enviar confirmación al usuario
     const userEmail = await resend.emails.send({
-      from: "info@nilspineda.com",
+      from: "noreply@nilspineda.com",
       to: email,
       subject: "Recibimos tu mensaje ✅",
       html: `
@@ -74,14 +80,20 @@ export const POST: APIRoute = async ({ request }) => {
       `,
     });
 
-    if (!adminEmail.id || !userEmail.id) {
-      throw new Error("Error al enviar emails");
+    if (userEmail.error) {
+      console.warn(
+        `Advertencia: Email de confirmación no enviado: ${userEmail.error.message}`,
+      );
     }
 
     return new Response(
       JSON.stringify({
         success: true,
         message: "Mensaje enviado correctamente",
+        data: {
+          adminEmailId: adminEmail.data?.id,
+          userEmailId: userEmail.data?.id,
+        },
       }),
       { status: 200 },
     );

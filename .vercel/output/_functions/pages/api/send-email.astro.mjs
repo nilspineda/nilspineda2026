@@ -24,6 +24,7 @@ const POST = async ({ request }) => {
     const adminEmail = await resend.emails.send({
       from: "noreply@nilspineda.com",
       to: "nilspineda@gmail.com",
+      replyTo: email,
       subject: `📩 Nuevo mensaje de: ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
@@ -34,10 +35,15 @@ const POST = async ({ request }) => {
             <p><strong>Mensaje:</strong></p>
             <p style="white-space: pre-wrap;">${message}</p>
           </div>
-          <p style="color: #666; font-size: 12px;">Responde a ${email}</p>
+          <p style="color: #666; font-size: 12px;">Para responder, usa el email: ${email}</p>
         </div>
       `
     });
+    if (adminEmail.error) {
+      throw new Error(
+        `Error enviando email al admin: ${adminEmail.error.message}`
+      );
+    }
     const userEmail = await resend.emails.send({
       from: "noreply@nilspineda.com",
       to: email,
@@ -55,22 +61,30 @@ const POST = async ({ request }) => {
         </div>
       `
     });
-    if (!adminEmail.id || !userEmail.id) {
-      throw new Error("Error al enviar emails");
+    if (userEmail.error) {
+      console.warn(
+        `Advertencia: Email de confirmación no enviado: ${userEmail.error.message}`
+      );
     }
     return new Response(
       JSON.stringify({
         success: true,
-        message: "Mensaje enviado correctamente"
+        message: "Mensaje enviado correctamente",
+        data: {
+          adminEmailId: adminEmail.data?.id,
+          userEmailId: userEmail.data?.id
+        }
       }),
       { status: 200 }
     );
   } catch (error) {
     console.error("Email error:", error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
     return new Response(
       JSON.stringify({
         success: false,
-        error: "Error al enviar el mensaje. Intenta nuevamente."
+        error: "Error al enviar el mensaje. Intenta nuevamente.",
+        details: errorMessage
       }),
       { status: 500 }
     );
