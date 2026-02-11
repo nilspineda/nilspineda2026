@@ -1,16 +1,13 @@
-// @ts-check
 import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
-import tailwindcss from "@tailwindcss/vite";
-import vercel from "@astrojs/vercel";
+import vercel from "@astrojs/vercel/serverless"; // o hybrid si usas static + server
 
-// https://astro.build/config
 export default defineConfig({
-  site: "https://nilspineda2026.vercel.app/",
-  output: "server",
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  integrations: [sitemap()],
-  adapter: vercel(),
+  output: "server", // o 'hybrid' si quieres páginas estáticas + rutas dinámicas
+  adapter: vercel({
+    // Opcional pero recomendado
+    webAnalytics: { enabled: true },
+    // Si usas edge functions (más rápido)
+    // edgeMiddleware: true,
+  }),
+  // ... resto de tu config
 });
