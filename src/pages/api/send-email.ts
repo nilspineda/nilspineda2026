@@ -39,6 +39,7 @@ export const POST: APIRoute = async ({ request }) => {
     const adminEmail = await resend.emails.send({
       from: "noreply@nilspineda.com",
       to: "nilspineda@gmail.com",
+      replyTo: email,
       subject: `📩 Nuevo mensaje de: ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
@@ -49,14 +50,14 @@ export const POST: APIRoute = async ({ request }) => {
             <p><strong>Mensaje:</strong></p>
             <p style="white-space: pre-wrap;">${message}</p>
           </div>
-          <p style="color: #666; font-size: 12px;">Responde a ${email}</p>
+          <p style="color: #666; font-size: 12px;">Para responder, usa el email: ${email}</p>
         </div>
       `,
     });
 
     // Enviar confirmación al usuario
     const userEmail = await resend.emails.send({
-      from: "noreply@nilspineda.com",
+      from: "info@nilspineda.com",
       to: email,
       subject: "Recibimos tu mensaje ✅",
       html: `
@@ -86,11 +87,13 @@ export const POST: APIRoute = async ({ request }) => {
     );
   } catch (error) {
     console.error("Email error:", error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
 
     return new Response(
       JSON.stringify({
         success: false,
         error: "Error al enviar el mensaje. Intenta nuevamente.",
+        details: errorMessage,
       }),
       { status: 500 },
     );
