@@ -1,6 +1,6 @@
 ---
 title: "Monpeza"
-slug: "giganet"
+slug: "monpeza"
 image: "/assets/giganet.webp"
 url: "https://website-johan.vercel.app/"
 description: "Tu salud y bienestar son mi prioridad. Brindo atención médica especializada en ginecología oncológica, con altos estándares de formación académica y un trato humano, respetuoso y cercano, acompañándote en cada etapa de tu cuidado."
