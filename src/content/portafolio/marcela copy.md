@@ -1,12 +1,12 @@
 ---
-title: "CyberWoman"
-slug: "cyberwoman"
-image: "/assets/cyberwoman.jpg"
+title: "Marcela Galan Podologia"
+slug: "marcela-podologa"
+image: "/assets/marcelagalan.jpg"
 url: "https://marcelagalanpodologia.com/"
 description: "Tu salud y bienestar son mi prioridad. Brindo atención médica especializada en ginecología oncológica, con altos estándares de formación académica y un trato humano, respetuoso y cercano, acompañándote en cada etapa de tu cuidado."
 date: 2025-02-08
 draft: false
-tags: ["design"]
+tags: ["web" , "Web design"]
 ---
 
 ### <a href="https://marcelagalanpodologia.com/" style="background-color:#28af90; color:#fff; padding:10px; border-radius:10px; margin-top:30px; display:inline-block;margin-bottom:15px;">Visita el sitio web</a>
