@@ -1,0 +1,77 @@
+---
+import LayoutNav from "../layouts/Layout-nav.astro";
+---
+
+<LayoutNav
+  title="Inicio | Nils Pineda - Diseño Web y Soluciones Digitales"
+  description="Transformamos ideas en experiencias digitales que conectan con tu audiencia. Con diseño y desarrollo a tu medida, somos tu aliado digital."
+>
+  <section
+    class="w-full flex flex-col lg:flex-row justify-center items-center px-8 lg:px-0 lg:py-16"
+  >
+    <div
+      class="w-full lg:w-1/2 flex flex-col items-center lg:items-center gap-6 text-center lg:text-center"
+    >
+      <h1 class="text-white text-4xl md:text-6xl lg:text-7xl mt-4 font-medium">
+        Aplica al <br />
+        <span class="text-primary-400 font-bold block lg:inline uppercase"
+          >Plan Impulse</span
+        >
+      </h1>
+
+      <p class="text-gray-400 text-base md:text-lg">
+        Estamos seleccionando 2 emprendimiento para ganar el desarrollo de su
+        página web profesional dentro del programa colaborativo Plan
+        Impulse.Este no es solo un sorteo. Es una oportunidad de transformación
+        real. Si estás comenzando tu negocio y quieres dar el siguiente paso
+        digital, esta puede ser tu oportunidad.
+      </p>
+
+      <div
+        class="flex flex-col sm:flex-row gap-4 w-full justify-center lg:justify-center mt-4"
+      >
+        <a
+          href="https://wa.me/573167195500?text=Hola,%20vengo%20desde%20el%20sitio%20web%20y%20quiero%20cotizar%20uno%20de%20tus%20servicios"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-primary-400 text-white px-8 py-3 rounded-xl font-bold hover:bg-primary-500 transition-all text-center animacion-botones flex items-center justify-center gap-2"
+        >
+          Hablemos
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler-brand-whatsapp"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+              d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path><path
+              d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"
+            ></path>
+          </svg>
+        </a>
+        <a
+          href="/portafolio"
+          class="border border-white/20 text-white px-8 py-3 rounded-xl hover:bg-white/10 transition-all text-center animacion-botones"
+        >
+          Ver portafolio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    :hover.animacion-botones {
+      @apply scale-105 transition-transform duration-300;
+    }
+  </style>
+</LayoutNav>
+
+<div>
+  
+</div>

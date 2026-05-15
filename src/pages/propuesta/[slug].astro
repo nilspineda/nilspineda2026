@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import HeroPropuesta from '../../components/propuesta/HeroPropuesta.astro';
+import SituacionActual from '../../components/propuesta/SituacionActual.astro';
+import Solucion from '../../components/propuesta/Solucion.astro';
+import Inversion from '../../components/propuesta/Inversion.astro';
+import Cronograma from '../../components/propuesta/Cronograma.astro';
+
+export async function getStaticPaths() {
+  const proposals = await getCollection('proposals');
+  return proposals.map((proposal) => ({
+    params: { slug: proposal.slug },
+    props: { proposal },
+  }));
+}
+
+const { proposal } = Astro.props;
+const { data } = proposal;
+
+const propuestaNum = String(proposal.id).padStart(3, '0');
+---
+
+<Layout
+  title={`Propuesta Comercial | ${data.cliente} - Nils Pineda`}
+  description={`Propuesta comercial para ${data.cliente} - ${data.titulo}`}
+>
+  <HeroPropuesta
+    cliente={data.cliente}
+    titulo={data.titulo}
+    subtitulo={data.subtitulo}
+    fecha={data.fecha}
+    colorAccent={data.colorAccent}
+    whatsapp={data.whatsapp}
+    propuestaNum={propuestaNum}
+  />
+
+  <SituacionActual
+    problemas={data.propuesta.problema}
+    oportunidades={data.propuesta.oportunidad}
+    colorAccent={data.colorAccent}
+  />
+
+  <Solucion
+    soluciones={data.propuesta.soluciones}
+    colorAccent={data.colorAccent}
+  />
+
+  <Inversion
+    planes={data.propuesta.planes}
+    colorAccent={data.colorAccent}
+    whatsapp={data.whatsapp}
+    cliente={data.cliente}
+  />
+
+  <Cronograma
+    timeline={data.propuesta.timeline}
+    colorAccent={data.colorAccent}
+  />
+</Layout>

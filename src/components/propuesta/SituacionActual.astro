@@ -1,0 +1,82 @@
+---
+interface Problema {
+  titulo: string;
+  descripcion: string;
+}
+
+interface Oportunidad {
+  titulo: string;
+  descripcion: string;
+}
+
+interface Props {
+  problemas: Problema[];
+  oportunidades: Oportunidad[];
+  colorAccent: string;
+}
+
+const { problemas, oportunidades, colorAccent } = Astro.props;
+
+const problemaIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>`;
+
+const oportunidadIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg>`;
+---
+
+<section class="py-24 px-6 relative overflow-hidden bg-[#131a22]">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="inline-block px-4 py-1 rounded-full text-sm font-medium text-primary-400 bg-primary-400/10 border border-primary-400/20 mb-4">
+        Situación Actual
+      </span>
+      <p class="text-white/50 max-w-2xl mx-auto">
+        Estos son los desafíos que están limitando el crecimiento de tu negocio
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="space-y-6">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-red-500/20 text-red-400" set:html={problemaIcon} />
+          <h3 class="text-xl font-bold text-white">Problemas</h3>
+        </div>
+
+        {problemas.map((problema, index) => (
+          <div class="p-5 rounded-2xl border border-white/10 bg-white/[0.02]">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-lg flex items-center justify-center text-red-400 bg-red-500/10 text-xs font-bold shrink-0">
+                {index + 1}
+              </div>
+              <div>
+                <h4 class="text-base font-semibold text-white mb-1">{problema.titulo}</h4>
+                <p class="text-white/50 text-sm">{problema.descripcion}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="space-y-6">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-primary-400/20 text-primary-400" set:html={oportunidadIcon} />
+          <h3 class="text-xl font-bold text-white">Oportunidades</h3>
+        </div>
+
+        {oportunidades.map((oportunidad, index) => (
+          <div class="p-5 rounded-2xl border border-white/10 bg-white/[0.02]">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 bg-primary-400/20 text-primary-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <path d="M5 12l5 5L20 7"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-base font-semibold text-white mb-1">{oportunidad.titulo}</h4>
+                <p class="text-white/50 text-sm">{oportunidad.descripcion}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

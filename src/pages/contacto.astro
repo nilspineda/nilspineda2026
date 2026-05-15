@@ -118,95 +118,56 @@ import LayoutNav from "../layouts/Layout-nav.astro";
 </LayoutNav>
 
 <script>
-  const form = document.getElementById("contact-form") as HTMLFormElement;
-  const btn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const form = document.getElementById("contact-form");
+  const btn = document.getElementById("submit-btn");
   const btnText = document.getElementById("btn-text");
   const status = document.getElementById("response-status");
 
-  form?.addEventListener("submit", async (e) => {
+  form?.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // Validación básica del frontend
-    const name = (
-      form.querySelector("input[name='name']") as HTMLInputElement
-    )?.value.trim();
-    const email = (
-      form.querySelector("input[name='email']") as HTMLInputElement
-    )?.value.trim();
-    const message = (
-      form.querySelector("textarea[name='message']") as HTMLTextAreaElement
-    )?.value.trim();
+    const name = form.querySelector("input[name='name']")?.value.trim();
+    const email = form.querySelector("input[name='email']")?.value.trim();
+    const message = form
+      .querySelector("textarea[name='message']")
+      ?.value.trim();
 
     if (!name || !email || !message) {
-      status!.innerText = "Por favor completa todos los campos.";
-      status!.className =
+      status.innerText = "Por favor completa todos los campos.";
+      status.className =
         "text-yellow-400 text-center text-sm font-medium mt-2 block";
-      status!.classList.remove("hidden");
+      status.classList.remove("hidden");
       return;
     }
 
-    // Validar formato de email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
     if (!emailRegex.test(email)) {
-      status!.innerText = "Por favor ingresa un email válido.";
-      status!.className =
+      status.innerText = "Por favor ingresa un email válido.";
+      status.className =
         "text-yellow-400 text-center text-sm font-medium mt-2 block";
-      status!.classList.remove("hidden");
+      status.classList.remove("hidden");
       return;
     }
 
-    // Estado de carga
     btn.disabled = true;
-    btnText!.innerText = "Enviando...";
-    status!.classList.add("hidden");
+    btnText.innerText = "Abriendo cliente de correo...";
+    status.classList.add("hidden");
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
+    const subject = `Contacto desde web: ${name}`;
+    const body = `Nombre: ${name}\\nEmail: ${email}\\n\\nMensaje:\\n${message}`;
+    const mailto = `mailto:info@nilspineda.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    try {
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+    status.innerText =
+      "Se abrirá tu cliente de correo. Si no ocurre, escribe a info@nilspineda.com";
+    status.className =
+      "text-primary-400 text-center text-sm font-medium mt-2 block";
+    status.classList.remove("hidden");
 
-      // Verificar que la respuesta sea JSON
-      const contentType = response.headers.get("content-type");
-      if (!contentType || !contentType.includes("application/json")) {
-        const text = await response.text();
-        console.error("Respuesta no-JSON:", text);
-        throw new Error(`Servidor retornó: ${text.substring(0, 100)}`);
-      }
+    // Abrir cliente de correo
+    window.location.href = mailto;
 
-      const result = (await response.json()) as {
-        success?: boolean;
-        message?: string;
-        error?: string;
-        details?: string;
-      };
-
-      if (response.ok && result.success) {
-        status!.innerText = "¡Mensaje enviado! Te escribiré pronto. 🎉";
-        status!.className =
-          "text-primary-400 text-center text-sm font-medium mt-2 block animate-bounce";
-        form.reset();
-      } else {
-        const errorMsg = result.error || "Error al enviar el mensaje";
-        const detailMsg = result.details ? ` - ${result.details}` : "";
-        throw new Error(errorMsg + detailMsg);
-      }
-    } catch (error) {
-      const errorText =
-        error instanceof Error ? error.message : "Error desconocido";
-      console.error("Formulario error:", errorText);
-
-      status!.innerText = `❌ ${errorText.substring(0, 80)}`;
-      status!.className =
-        "text-red-400 text-center text-sm font-medium mt-2 block";
-    } finally {
-      btn.disabled = false;
-      btnText!.innerText = "Enviar mensaje";
-      status!.classList.remove("hidden");
-    }
+    form.reset();
+    btn.disabled = false;
+    btnText.innerText = "Enviar mensaje";
   });
 </script>
